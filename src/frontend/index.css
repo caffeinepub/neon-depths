@@ -1,0 +1,260 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.375rem;
+
+    /* Deep Sea Cyberpunk palette */
+    --background: 0.085 0.02 260;
+    --foreground: 0.95 0.04 195;
+
+    --card: 0.1 0.025 255;
+    --card-foreground: 0.92 0.035 195;
+
+    --popover: 0.12 0.03 260;
+    --popover-foreground: 0.92 0.035 195;
+
+    /* Neon cyan primary */
+    --primary: 0.78 0.18 195;
+    --primary-foreground: 0.06 0.02 260;
+
+    /* Deep indigo secondary */
+    --secondary: 0.15 0.04 270;
+    --secondary-foreground: 0.88 0.04 195;
+
+    --muted: 0.14 0.03 265;
+    --muted-foreground: 0.55 0.06 220;
+
+    /* Hot magenta accent */
+    --accent: 0.65 0.28 328;
+    --accent-foreground: 0.06 0.01 260;
+
+    --destructive: 0.62 0.26 22;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.25 0.06 240;
+    --input: 0.18 0.04 255;
+    --ring: 0.78 0.18 195;
+
+    /* Neon colors as custom tokens */
+    --neon-cyan: 0.82 0.19 195;
+    --neon-magenta: 0.68 0.30 328;
+    --neon-purple: 0.62 0.22 290;
+    --neon-orange: 0.75 0.22 45;
+    --neon-green: 0.78 0.21 155;
+    --deep-black: 0.06 0.015 260;
+    --deep-blue: 0.08 0.025 255;
+    --mid-blue: 0.14 0.04 260;
+
+    /* Chart colors */
+    --chart-1: 0.82 0.19 195;
+    --chart-2: 0.68 0.30 328;
+    --chart-3: 0.62 0.22 290;
+    --chart-4: 0.75 0.22 45;
+    --chart-5: 0.78 0.21 155;
+
+    --sidebar: 0.09 0.025 260;
+    --sidebar-foreground: 0.92 0.035 195;
+    --sidebar-primary: 0.82 0.19 195;
+    --sidebar-primary-foreground: 0.06 0.02 260;
+    --sidebar-accent: 0.14 0.04 265;
+    --sidebar-accent-foreground: 0.88 0.04 195;
+    --sidebar-border: 0.22 0.05 245;
+    --sidebar-ring: 0.78 0.18 195;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    overflow: hidden;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
+
+/* Neon glow utilities */
+@layer utilities {
+  .neon-cyan {
+    color: oklch(var(--neon-cyan));
+    text-shadow:
+      0 0 10px oklch(var(--neon-cyan) / 0.9),
+      0 0 30px oklch(var(--neon-cyan) / 0.6),
+      0 0 60px oklch(var(--neon-cyan) / 0.3);
+  }
+
+  .neon-magenta {
+    color: oklch(var(--neon-magenta));
+    text-shadow:
+      0 0 10px oklch(var(--neon-magenta) / 0.9),
+      0 0 30px oklch(var(--neon-magenta) / 0.6),
+      0 0 60px oklch(var(--neon-magenta) / 0.3);
+  }
+
+  .neon-purple {
+    color: oklch(var(--neon-purple));
+    text-shadow:
+      0 0 10px oklch(var(--neon-purple) / 0.9),
+      0 0 30px oklch(var(--neon-purple) / 0.6),
+      0 0 60px oklch(var(--neon-purple) / 0.3);
+  }
+
+  .neon-orange {
+    color: oklch(var(--neon-orange));
+    text-shadow:
+      0 0 10px oklch(var(--neon-orange) / 0.9),
+      0 0 30px oklch(var(--neon-orange) / 0.6),
+      0 0 60px oklch(var(--neon-orange) / 0.3);
+  }
+
+  .glow-box-cyan {
+    box-shadow:
+      0 0 8px oklch(var(--neon-cyan) / 0.6),
+      0 0 20px oklch(var(--neon-cyan) / 0.3),
+      inset 0 0 8px oklch(var(--neon-cyan) / 0.1);
+  }
+
+  .glow-box-magenta {
+    box-shadow:
+      0 0 8px oklch(var(--neon-magenta) / 0.6),
+      0 0 20px oklch(var(--neon-magenta) / 0.3),
+      inset 0 0 8px oklch(var(--neon-magenta) / 0.1);
+  }
+
+  .glow-border-cyan {
+    border-color: oklch(var(--neon-cyan) / 0.6);
+    box-shadow:
+      0 0 6px oklch(var(--neon-cyan) / 0.4),
+      inset 0 0 6px oklch(var(--neon-cyan) / 0.1);
+  }
+
+  .glow-border-magenta {
+    border-color: oklch(var(--neon-magenta) / 0.6);
+    box-shadow:
+      0 0 6px oklch(var(--neon-magenta) / 0.4),
+      inset 0 0 6px oklch(var(--neon-magenta) / 0.1);
+  }
+
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-mono-game {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Screen crack overlay for pressure warning */
+  .screen-crack-1 {
+    background-image: 
+      linear-gradient(135deg, transparent 40%, oklch(var(--destructive) / 0.15) 41%, transparent 42%),
+      linear-gradient(45deg, transparent 60%, oklch(var(--destructive) / 0.1) 61%, transparent 62%),
+      linear-gradient(170deg, transparent 50%, oklch(var(--destructive) / 0.12) 51%, transparent 52%);
+  }
+
+  .screen-crack-2 {
+    background-image: 
+      linear-gradient(135deg, transparent 30%, oklch(var(--destructive) / 0.25) 31%, transparent 33%),
+      linear-gradient(45deg, transparent 50%, oklch(var(--destructive) / 0.2) 52%, transparent 54%),
+      linear-gradient(170deg, transparent 40%, oklch(var(--destructive) / 0.22) 41%, transparent 43%),
+      linear-gradient(100deg, transparent 55%, oklch(var(--destructive) / 0.18) 56%, transparent 58%);
+  }
+
+  /* Scanline effect */
+  .scanlines::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      oklch(0 0 0 / 0.03) 2px,
+      oklch(0 0 0 / 0.03) 4px
+    );
+    pointer-events: none;
+  }
+}
+
+/* Keyframe animations */
+@keyframes pulse-neon {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes slide-in-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-down {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes milestone-pop {
+  0% { transform: scale(0.8) translateY(-10px); opacity: 0; }
+  20% { transform: scale(1.1) translateY(0); opacity: 1; }
+  80% { transform: scale(1) translateY(0); opacity: 1; }
+  100% { transform: scale(0.9) translateY(-5px); opacity: 0; }
+}
+
+@keyframes pressure-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 oklch(var(--destructive) / 0.4); }
+  50% { box-shadow: 0 0 0 8px oklch(var(--destructive) / 0); }
+}
+
+@keyframes coin-collect {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes float-bubble {
+  0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+  50% { transform: translateY(-15px) translateX(5px); opacity: 0.7; }
+  100% { transform: translateY(-30px) translateX(-3px); opacity: 0; }
+}
+
+.animate-pulse-neon { animation: pulse-neon 2s ease-in-out infinite; }
+.animate-slide-in-up { animation: slide-in-up 0.3s ease-out forwards; }
+.animate-slide-in-down { animation: slide-in-down 0.3s ease-out forwards; }
+.animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
+.animate-milestone { animation: milestone-pop 2s ease-in-out forwards; }
+.animate-pressure-pulse { animation: pressure-pulse 1s ease-in-out infinite; }
+.animate-float-bubble { animation: float-bubble 3s ease-in-out infinite; }
